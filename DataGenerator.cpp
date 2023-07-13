@@ -1,8 +1,4 @@
-﻿#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <time.h>
-#include "lib.h"
+﻿#include "lib.h"
 using namespace std;
 
 template <class T>
