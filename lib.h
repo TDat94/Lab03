@@ -2,6 +2,9 @@
 #include <fstream>
 #include <cmath>
 #include <time.h>
+#pragma once
+
+using namespace std;
 
 void GenerateRandomData(int a[], int n);
 void GenerateSortedData(int a[], int n);
