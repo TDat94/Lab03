@@ -31,3 +31,11 @@ void measure_radixSort(int arr[], int n, double &time, int &comparison);
 int partition(int arr[], int low, int high, int& comparison);
 void quickSort(int arr[], int low, int high, int& total_comparison);
 void measure_quickSort(int arr[], int n, int& total_comparison, double& time);
+
+// Bubble Sort
+void bubble_sort(int arr[], int n, int &comparison);
+void measure_bubble_sort(int arr[], int n, double &time, int &comparison);
+
+// Shaker Sort
+void shaker_sort(int arr[], int n, int &comparison);
+void measure_shaker_sort(int arr[], int n, double &time, int &comparison);
