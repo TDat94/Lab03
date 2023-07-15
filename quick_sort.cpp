@@ -33,10 +33,10 @@ void quickSort(int arr[], int low, int high, int& total_comparison)
     }
 }
 
-void measure_quickSort(int arr[], int low, int high, int& total_comparison, double& time)
+void measure_quickSort(int arr[], int n, int& total_comparison, double& time)
 {
     clock_t start = clock();
-    quickSort(arr, low, high, total_comparison);
+    quickSort(arr, 0, n - 1, total_comparison);
     clock_t end = clock();
     time = double(end - start) / CLOCKS_PER_SEC;
 }

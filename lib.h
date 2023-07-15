@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Data generation
 void GenerateRandomData(int a[], int n);
 void GenerateSortedData(int a[], int n);
 void GenerateReverseData(int a[], int n);
@@ -29,4 +30,4 @@ void measure_radixSort(int arr[], int n, double &time, int &comparison);
 // Quick Sort
 int partition(int arr[], int low, int high, int& comparison);
 void quickSort(int arr[], int low, int high, int& total_comparison);
-void measure_quickSort(int arr[], int low, int high, int& total_comparison, double& time);
+void measure_quickSort(int arr[], int n, int& total_comparison, double& time);
