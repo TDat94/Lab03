@@ -1,18 +1,18 @@
 #include "lib.h"
 
-void merge(int arr[], int left, int right, int middle){
+void merge(int arr[], int left, int right, int middle, int &comparison){
     int leftSize = middle - left + 1;
     int rightSize = right - middle;
     int* leftArr = new int[leftSize];
     int* rightArr = new int[rightSize];
-    for(int i = 0; i < leftSize; i++){
+    for(int i = 0; comparison++ && i < leftSize; i++){
         leftArr[i] = arr[left + i];
     }
-    for(int j = 0; j < rightSize; j++){
+    for(int j = 0; comparison++ && j < rightSize; j++){
         rightArr[j] = arr[middle + j + 1];
     }
     int i = 0, j = 0, key = left;
-    while(i < leftSize && j < rightSize){
+    while(comparison += 2 && i < leftSize && j < rightSize){
         if(leftArr[i] < rightArr[j]){
             arr[key] = leftArr[i];
             i++;
@@ -23,23 +23,31 @@ void merge(int arr[], int left, int right, int middle){
         }
         key++;
     }
-    while(i < leftSize){
+    while(comparison++ && i < leftSize){
         arr[key] = leftArr[i];
         i++;
         key++;
     }
-    while(j < rightSize){
+    while(comparison++ && j < rightSize){
         arr[key] = rightArr[j];
         j++;
         key++;
     }
 }
 
-void mergeSort(int arr[], int left, int right){
-    if(left < right){
+void mergeSort(int arr[], int left, int right, int &comparison){
+    comparison = 0;
+    if(comparison++ && left < right){
         int middle = (left + right) / 2;
         mergeSort(arr, left, middle);
         mergeSort(arr, middle + 1, right);
-        merge(arr, left, right, middle);
+        merge(arr, left, right, middle, comparison);
     }
+}
+
+void measureMergeSort(int arr[], int size, double &time, int &comparison){
+    clock_t start = clock();
+    mergeSort(arr, 0, size - 1);
+    clock_t end = clock();
+    time = double(end - start) / CLOCKS_PER_SEC;
 }
