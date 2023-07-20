@@ -1,27 +1,28 @@
 #include "lib.h"
+#include "DataGenerator.cpp"
 
 void shaker_sort(int arr[], int n, int &comparison)
 {
-    int comparison=0;
+    comparison=0;
     int left = 0;
     int right = n - 1;
-    while (comparison++ && true)
+    while (++comparison && true)
     {
         bool check = false;
-        for (int i = left; comparison++ && i < right; i++)
+        for (int i = left; ++comparison && i < right; i++)
         {
-            if (comparison++ && arr[i] > arr[i + 1])
+            if (++comparison && arr[i] > arr[i + 1])
             {
                 swap(arr[i], arr[i + 1]);
                 check = true;
             }
         }
         right--;
-        if (!check)
+        if (++comparison && !check)
             break;
-        for (int i = right; comparison++ && i > left; i--)
+        for (int i = right; ++comparison && i > left; i--)
         {
-            if (comparison++ && arr[i] < arr[i - 1])
+            if (++comparison && arr[i] < arr[i - 1])
                 swap(arr[i], arr[i - 1]);
         }
         left++;
