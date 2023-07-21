@@ -1,25 +1,25 @@
 #include "lib.h"
 
-void insertion_sort(int arr[], int n, int& comparison) //source: geeks for geeks
-{
-    comparison = 0;
-    int i, key, j;
-    for (i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
+// void insertion_sort(int arr[], int n, int& comparison) //source: geeks for geeks
+// {
+//     comparison = 0;
+//     int i, key, j;
+//     for (i = 1; i < n; i++) {
+//         key = arr[i];
+//         j = i - 1;
 
-        // Move elements of arr[0..i-1],
-        // that are greater than key,
-        // to one position ahead of their
-        // current position
-        while ((++comparison && j >= 0) && (++comparison && arr[j] > key)) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
-    }
-    comparison += n; //count comparison in for loop
-}
+//         // Move elements of arr[0..i-1],
+//         // that are greater than key,
+//         // to one position ahead of their
+//         // current position
+//         while ((++comparison && j >= 0) && (++comparison && arr[j] > key)) {
+//             arr[j + 1] = arr[j];
+//             j = j - 1;
+//         }
+//         arr[j + 1] = key;
+//     }
+//     comparison += n; //count comparison in for loop
+// }
 
 void flash_sort(int a[], int n, int& total_comp)
 {

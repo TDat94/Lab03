@@ -1,5 +1,4 @@
 #include "lib.h"
-#include "DataGenerator.cpp"
 
 int findMax(int arr[], int n, int &comparison)
 {
