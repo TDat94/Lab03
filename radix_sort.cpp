@@ -1,5 +1,6 @@
 #include "lib.h"
 
+// Function to find the maximum element in the array
 int findMax(int arr[], int size)
 {
     int max = arr[0];
@@ -17,23 +18,37 @@ void countingSort(int arr[], int size, int exp, int &comparison)
     int count[RADIX] = {0};
 
     // Store count of occurrences in count[]
-    for (int i = 0; comparison++ && i < size; i++)
+    for (int i = 0; i < size; i++)
+    {
+        comparison++; // Increment the comparison count for each iteration of the loop.
         count[(arr[i] / exp) % RADIX]++;
+    }
+    comparison++;
 
     // Change count[i] so that count[i] contains the actual position of this digit in output[]
-    for (int i = 1; comparison++ && i < RADIX; i++)
+    for (int i = 1; i < RADIX; i++)
+    {
+        comparison++; // Increment the comparison count for each iteration of the loop.
         count[i] += count[i - 1];
+    }
+    comparison++;
 
     // Build the output array
-    for (int i = size - 1; comparison++ && i >= 0; i--)
+    for (int i = size - 1; i >= 0; i--)
     {
+        comparison++; // Increment the comparison count for each iteration of the loop.
         output[count[(arr[i] / exp) % RADIX] - 1] = arr[i];
         count[(arr[i] / exp) % RADIX]--;
     }
+    comparison++;
 
     // Copy the output array to arr[] so that arr[] contains sorted numbers according to the current digit
-    for (int i = 0; comparison++ && i < size; i++)
+    for (int i = 0; i < size; i++)
+    {
+        comparison++; // Increment the comparison count for each iteration of the loop.
         arr[i] = output[i];
+    }
+    comparison++;
 }
 
 void radixSort(int arr[], int size, int &total_comparison)
@@ -44,11 +59,12 @@ void radixSort(int arr[], int size, int &total_comparison)
     int max = findMax(arr, size);
 
     // Perform counting sort for every digit
-    for (int exp = 1; comparison++ && max / exp > 0; exp *= 10)
+    for (int exp = 1; max / exp > 0; exp *= 10)
     {
         countingSort(arr, size, exp, comparison);
         total_comparison += comparison; // Add the local comparison count to the total count.
     }
+    total_comparison++;
 }
 
 void measure_radixSort(int arr[], int n, double &time, int &comparison)
