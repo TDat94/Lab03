@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cmath>
 #include <time.h>
+#include <cstring>
 #pragma once
 
 using namespace std;

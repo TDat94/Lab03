@@ -1,5 +1,4 @@
 #include "lib.h"
-#include "DataGenerator.cpp"
 
 void bubble_sort(int arr[], int n, int &comparison)
 {
