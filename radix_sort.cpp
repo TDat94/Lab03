@@ -9,38 +9,45 @@ int findMax(int arr[], int size)
     return max;
 }
 
-void counting_sort(int arr[], int n, int level, int &comparison)
+void countingSort(int arr[], int size, int exp, int &comparison)
 {
-    comparison=0;
-    int *elements=new int[10]{0};
-    int *newArray=new int[n];
-    for (int i=0; comparison++ && i<n; i++)
-        elements[(arr[i]/level)%10]++;
-    for (int i=1; comparison++ && i<10; i++)
-        elements[i]=elements[i]+elements[i-1];
-    for (int i=n-1; comparison++ && i>=0; i--)
+    const int RADIX = 10; // The base of the radix system
+
+    int output[size];
+    int count[RADIX] = {0};
+
+    // Store count of occurrences in count[]
+    for (int i = 0; comparison++ && i < size; i++)
+        count[(arr[i] / exp) % RADIX]++;
+
+    // Change count[i] so that count[i] contains the actual position of this digit in output[]
+    for (int i = 1; comparison++ && i < RADIX; i++)
+        count[i] += count[i - 1];
+
+    // Build the output array
+    for (int i = size - 1; comparison++ && i >= 0; i--)
     {
-        newArray[elements[(arr[i]/level)%10]-1]=arr[i];
-        elements[(arr[i]/level)%10]--;
+        output[count[(arr[i] / exp) % RADIX] - 1] = arr[i];
+        count[(arr[i] / exp) % RADIX]--;
     }
-    for (int i=0; comparison++ && i<n; i++)
-        arr[i]=newArray[i];
-    delete []newArray;
-    delete []elements;
+
+    // Copy the output array to arr[] so that arr[] contains sorted numbers according to the current digit
+    for (int i = 0; comparison++ && i < size; i++)
+        arr[i] = output[i];
 }
 
-void radixSort(int arr[], int size, int total_comp)
+void radixSort(int arr[], int size, int &total_comparison)
 {
-    int comparison = 0;
-    total_comp = 0;
+    int comparison = 0; // Local comparison count for each call of countingSort
+
     // Find the maximum number to know the number of digits
     int max = findMax(arr, size);
 
     // Perform counting sort for every digit
-    for (int level = 1; total_comp++ && max / level > 0; level *= 10)
+    for (int exp = 1; comparison++ && max / exp > 0; exp *= 10)
     {
-        counting_sort(arr, size, level, comparison);
-        total_comp += comparison;
+        countingSort(arr, size, exp, comparison);
+        total_comparison += comparison; // Add the local comparison count to the total count.
     }
 }
 
