@@ -35,18 +35,19 @@ void merge(int arr[], int left, int right, int middle, int &comparison){
     }
 }
 
-void mergeSort(int arr[], int left, int right, int &comparison){
+void merge_sort(int arr[], int left, int right, int &comparison){
     if((comparison++, left < right)){
         int middle = (left + right) / 2;
-        mergeSort(arr, left, middle, comparison);
-        mergeSort(arr, middle + 1, right, comparison);
+        merge_sort(arr, left, middle, comparison);
+        merge_sort(arr, middle + 1, right, comparison);
         merge(arr, left, right, middle, comparison);
     }
 }
 
-void measureMergeSort(int arr[], int size, double &time, int &comparison){
+void measure_merge_sort(int arr[], int size, int &comparison, double &time){
+    comparison = 0;
     clock_t start = clock();
-    mergeSort(arr, 0, size - 1, comparison);
+    merge_sort(arr, 0, size - 1, comparison);
     clock_t end = clock();
     time = double(end - start) / CLOCKS_PER_SEC;
 }
