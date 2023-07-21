@@ -3,7 +3,7 @@
 void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &time)
 {
     if (algorithm=="selection_sort")
-        selectionSort(a, n, comparison, time);
+        measure_selection_sort(a, n, comparison, time);
     else if (algorithm=="bubble_sort")
         measure_bubble_sort(a, n, time, comparison);
     else if (algorithm=="counting_sort")
@@ -15,13 +15,13 @@ void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &t
     else if (algorithm=="insertion_sort")
         measure_insertion_sort(a, n, time, comparison);
     else if (algorithm=="merge_sort")
-        measureMergeSort(a, n, time, comparison);
+        measure_merge_sort(a, n, comparison, time);
     else if (algorithm=="quick_sort")
         measure_quickSort(a, n, comparison, time);
     else if (algorithm=="radix_sort")
         measure_radixSort(a, n, time, comparison);
     else if (algorithm=="shell_sort")
-        shellSort(a, n, comparison, time);
+        measure_shell_sort(a, n, comparison, time);
     else if (algorithm=="shaker_sort")
         measure_shaker_sort(a, n, time, comparison);
     else
