@@ -43,3 +43,22 @@ void measure_bubble_sort(int arr[], int n, double &time, int &comparison);
 // Shaker Sort
 void shaker_sort(int arr[], int n, int &comparison);
 void measure_shaker_sort(int arr[], int n, double &time, int &comparison);
+
+// Insertion Sort
+void insertion_sort(int arr[], int n, int& comparison);
+void measure_insertion_sort(int arr[], int n, double &time, int &comparison);
+
+// Flash Sort
+void flash_sort(int a[], int n, int& total_comp);
+void measure_flash_sort(int arr[], int n, double &time, int &total_comp);
+
+// Heap Sort
+void heapify(int arr[], int N, int i, int& comparison);
+void heap_sort(int arr[], int N, int& total_comp);
+void measure_heap_sort(int arr[], int n, double &time, int &total_comp);
+
+// Selection Sort
+void selectionSort(int arr[], int size, int &comparison, double &time);
+
+// Shell Sort
+void shellSort(int arr[], int size, int &comparison, double &time);

@@ -1,20 +1,21 @@
 #include "lib.h"
+#include "DataGenerator.cpp"
 
 void bubble_sort(int arr[], int n, int &comparison)
 {
     comparison=0;
-    for (int j = 0; j < n; j++)
+    for (int j = 0; ++comparison && j < n; j++)
     {
         bool check = false;
-        for (int i = 0; comparison++ && i < n - 1; i++)
+        for (int i = 0; ++comparison && i < n - 1; i++)
         {
-            if (comparison++ && arr[i] > arr[i + 1])
+            if (++comparison && arr[i] > arr[i + 1])
             {
                 swap(arr[i], arr[i + 1]);
                 check = true;
             }
         }
-        if (!check)
+        if (++comparison && !check)
             break;
     }
 }
