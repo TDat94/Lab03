@@ -28,7 +28,8 @@ void measure_counting_sort(int arr[], int n, double &time, int &comparison);
 
 // Radix Sort
 int findMax(int arr[], int size);
-void radixSort(int arr[], int size, int total_comp);
+void countingSort(int arr[], int size, int exp, int &comparison);
+void radixSort(int arr[], int size, int& total_comp);
 void measure_radixSort(int arr[], int n, double &time, int &comparison);
 
 // Quick Sort
