@@ -1,8 +1,6 @@
 #include "lib.h"
 
-void shellSort(int arr[], int size, int &comparison, double &time){
-    comparison = 0;
-    clock_t start = clock();
+void shell_sort(int arr[], int size, int &comparison){
     //Split array into sub-arrays using intervals
     for(int interval = size / 2; interval >= 1; interval /= 2, ++comparison){
         //Insertion sort
@@ -21,6 +19,12 @@ void shellSort(int arr[], int size, int &comparison, double &time){
             arr[j + interval] = temp; 
         }
     }
+}
+
+void measure_shell_sort(int arr[], int size, int &comparison, double &time){
+    comparison = 0;
+    clock_t start = clock();
+    shell_sort(arr, size, comparison);
     clock_t end = clock();
-    time = double(start - end) / CLOCKS_PER_SEC;
+    time = double(end-start) / CLOCKS_PER_SEC;
 }

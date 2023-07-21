@@ -15,8 +15,8 @@ void GenerateData(int a[], int n, int dataType);
 
 // Merge Sort
 void merge(int arr[], int left, int right, int middle, int &comparison);
-void mergeSort(int arr[], int left, int right, int &comparison);
-void measureMergeSort(int arr[], int size, double &time, int &comparison);
+void merge_sort(int arr[], int left, int right, int &comparison);
+void measure_merge_sort(int arr[], int size, int &comparison, double &time);
 
 // Shell Sort
 
@@ -58,7 +58,12 @@ void heap_sort(int arr[], int N, int& total_comp);
 void measure_heap_sort(int arr[], int n, double &time, int &total_comp);
 
 // Selection Sort
-void selectionSort(int arr[], int size, int &comparison, double &time);
+void selection_sort(int arr[], int size, int &comparison);
+void measure_selection_sort(int arr[], int size, int &comparison, double &time);
 
 // Shell Sort
-void shellSort(int arr[], int size, int &comparison, double &time);
+void shell_sort(int arr[], int size, int &comparison);
+void measure_shell_sort(int arr[], int size, int &comparison, double &time);
+
+// Command 2
+void command2(string algorithm, int inputSize, string inputOrder, string outputParam);
