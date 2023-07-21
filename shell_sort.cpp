@@ -1,7 +1,7 @@
 #include "lib.h"
 
 void shellSort(int arr[], int size, int &comparison, double &time){
-    comparison = 1;
+    comparison = 0;
     clock_t start = clock();
     //Split array into sub-arrays using intervals
     for(int interval = size / 2; interval >= 1; interval /= 2, ++comparison){

@@ -18,6 +18,10 @@ void merge(int arr[], int left, int right, int middle, int &comparison);
 void mergeSort(int arr[], int left, int right, int &comparison);
 void measureMergeSort(int arr[], int size, double &time, int &comparison);
 
+// Shell Sort
+
+// Selection Sort
+
 // Counting Sort
 void counting_sort(int arr[], int n, int level, int &comparison);
 void measure_counting_sort(int arr[], int n, double &time, int &comparison);
