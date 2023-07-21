@@ -8,15 +8,15 @@ int partition(int arr[], int low, int high, int& comparison)
     for (int j = low; j <= high - 1; j++)
     {
         comparison++;  // Increment comparison count
-
         if (arr[j] < pivot)
         {
             i++;
             std::swap(arr[i], arr[j]);
         }
     }
+    comparison++;
 
-    std::swap(arr[i + 1], arr[high]);
+    swap(arr[i + 1], arr[high]);
     return i + 1;
 }
 
@@ -31,6 +31,7 @@ void quickSort(int arr[], int low, int high, int& total_comparison)
         quickSort(arr, low, pivotIndex - 1, total_comparison);
         quickSort(arr, pivotIndex + 1, high, total_comparison);
     }
+    total_comparison++;
 }
 
 void measure_quickSort(int arr[], int n, int& total_comparison, double& time)
