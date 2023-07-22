@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void shaker_sort(int arr[], int n, int &comparison)
+void shaker_sort(int arr[], int n, long long &comparison)
 {
     comparison=0;
     int left = 0;
@@ -28,7 +28,7 @@ void shaker_sort(int arr[], int n, int &comparison)
     }
 }
 
-void measure_shaker_sort(int arr[], int n, double &time, int &comparison)
+void measure_shaker_sort(int arr[], int n, double &time, long long &comparison)
 {
     clock_t start = clock();
     shaker_sort(arr, n, comparison);

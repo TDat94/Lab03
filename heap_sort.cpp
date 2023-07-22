@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void heapify(int arr[], int N, int i, int& comparison) //source: geeks for geeks
+void heapify(int arr[], int N, int i, long long& comparison) //source: geeks for geeks
 {
     comparison = 0;
     // Initialize largest as root
@@ -31,7 +31,7 @@ void heapify(int arr[], int N, int i, int& comparison) //source: geeks for geeks
     }
 }
 
-void heap_sort(int arr[], int N, int& total_comp)
+void heap_sort(int arr[], int N, long long & total_comp)
 {
     int comparison_heap = 0;
     total_comp = 0;
@@ -57,7 +57,7 @@ void heap_sort(int arr[], int N, int& total_comp)
     total_comp += N + 1;
 }
 
-void measure_heap_sort(int arr[], int n, double &time, int &total_comp)
+void measure_heap_sort(int arr[], int n, double &time, long long &total_comp)
 {
     clock_t start = clock();
     heap_sort(arr, n, total_comp);

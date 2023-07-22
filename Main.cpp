@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &time)
+void checkAlgorithm(string algorithm, int a[], int n, long long &comparison, double &time)
 {
     if (algorithm == "selection-sort")
         measure_selection_sort(a, n, comparison, time);
@@ -58,7 +58,7 @@ void readCommand1(int argc, char *argv[], string &algorithm, string &filename, s
     output_par = argv[4];
 }
 
-void executeCommand1(string algorithm, string filename, string output_par, int &comparison, double &time)
+void executeCommand1(string algorithm, string filename, string output_par, long long &comparison, double &time)
 {
     ifstream fileIn;
     fileIn.open(filename);
@@ -125,7 +125,7 @@ void command2(string algorithm, int inputSize, string inputOrder, string outputP
         GenerateData(arr, inputSize, -1);
     }
     double time = 0;
-    int comparison = 0;
+    long long comparison = 0;
 
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
     int output = checkOutputParam(outputParam);
@@ -155,7 +155,7 @@ void command3(string algorithm, int inputSize, string outputParam)
     cout << "Input size: " << inputSize << endl;
     cout << "--------------------------------------\n";
     cout << "Input order: Randomize" << endl;
-    int comparison = 0;
+    long long comparison = 0;
     double time = 0;
     GenerateData(arr, inputSize, 0);
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
@@ -265,9 +265,9 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     fileIn >> a[i]; 
     fileIn.close();
     
-    int comparison1 = 0;
+    long long comparison1 = 0;
     double time1 = 0;
-    int comparison2 = 0;
+    long long comparison2 = 0;
     
     double time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
@@ -317,7 +317,7 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
         cout << "Order is not found \n";
         return;
     }
-    int comparison1 = 0, comparison2 = 0;
+    long long comparison1 = 0, comparison2 = 0;
     double time1 = 0, time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
     checkAlgorithm(algorithm2, a, n, comparison2, time2);
@@ -368,7 +368,7 @@ int main(int argc, char *argv[])
     string output_par;
     string order;
     int n;
-    int comparison;
+    long long comparison;
     double time;
     int Option = option(argc, argv);
     if (Option == 0)
