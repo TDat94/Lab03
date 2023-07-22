@@ -1,13 +1,21 @@
 #include "lib.h"
 
+int chooseMiddlePivot(int arr[], int low, int high)
+{
+    return low + (high - low) / 2;
+}
+
 int partition(int arr[], int low, int high, long long& comparison)
 {
-    int pivot = arr[high];  // Pivot is the last element of the list
+    int pivotIndex = chooseMiddlePivot(arr, low, high);
+    int pivot = arr[pivotIndex];
+    // Move the pivot to the end
+    swap(arr[pivotIndex], arr[high]);
     int i = low - 1;
 
     for (int j = low; j <= high - 1; j++)
     {
-        comparison++;  // Increment comparison count
+        comparison+=2; // Increment comparison count
         if (arr[j] < pivot)
         {
             i++;
@@ -22,11 +30,10 @@ int partition(int arr[], int low, int high, long long& comparison)
 
 void quickSort(int arr[], int low, int high, long long& total_comparison)
 {
-    if (low < high)
-    {
-        long long comparison = 0;  // Initialize comparison count for each recursive call
+    if (low < high) {
+        long long comparison = 0; // Initialize comparison count for each recursive call
         int pivotIndex = partition(arr, low, high, comparison);
-        total_comparison += comparison;  // Add comparison count to the total
+        total_comparison += comparison; // Add comparison count to the total
 
         quickSort(arr, low, pivotIndex - 1, total_comparison);
         quickSort(arr, pivotIndex + 1, high, total_comparison);
