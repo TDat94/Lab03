@@ -288,6 +288,55 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     delete [] a;
 }
 
+void readCommand5(int argc, char* argv[], string& algorithm1, string& algorithm2, int& n, string& order)
+{
+    algorithm1 = argv[2];
+    algorithm2 = argv[3];
+    string size = argv[4];
+    try
+    {
+        n = stoi(size);
+    }
+    catch(const invalid_argument& e)
+    {
+        n = 0;
+    }
+    order = argv[5];
+}
+
+void executeCommand5(string algorithm1, string algorithm2, int n, string order)
+{
+    int* a;
+    a = new int[n];
+    if (order.compare("-rand") == 0)
+        GenerateData(a, n, 0);
+    else if (order.compare("-sorted") == 0)
+        GenerateData(a, n, 1);
+    else if (order.compare("-rev") == 0)
+        GenerateData(a, n, 2);
+    else if (order.compare("-nsorted") == 0)
+        GenerateData(a, n, 3);
+    else 
+    {
+        cout << "Order is not found \n";
+        return;
+    }
+    int comparison1 = 0, comparison2 = 0;
+    double time1 = 0, time2 = 0;
+    checkAlgorithm(algorithm1, a, n, comparison1, time1);
+    checkAlgorithm(algorithm2, a, n, comparison2, time2);
+
+    cout << "COMPARE MODE" << endl;
+    cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
+    cout << "Input size: " << n << endl;
+    cout << "Input order " << order << endl;
+    cout << "--------------------------------------\n";
+    cout << "Running time: " << time1 << " | " << time2 << endl;
+    cout << "Comparisons: " << comparison1 << " | " << comparison2 << endl;
+
+    delete [] a;
+}
+
 int option(int argc, char *argv[])
 {
     if (argc == 4)
