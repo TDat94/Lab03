@@ -383,9 +383,11 @@ int main(int argc, char *argv[])
     }
     else if (Option == 2)
     {
+        command2(argv[2], stoi(argv[3]), argv[4], argv[5]);
     }
     else if (Option == 3)
     {
+        command3(argv[2], stoi(argv[3]), argv[4]);
     }
     else if (Option == 4)
     {
