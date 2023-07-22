@@ -25,7 +25,9 @@ void measure_merge_sort(int arr[], int size, long long&comparison, double &time)
 // Selection Sort
 
 // Counting Sort
-void counting_sort(int arr[], int n, int level, long long&comparison);
+int findMax(int arr[], int n, long long &comparison);
+int findMin(int arr[], int n, long long &comparison);
+void counting_sort(int arr[], int n, long long &comparison);
 void measure_counting_sort(int arr[], int n, double &time, long long&comparison);
 
 // Radix Sort
