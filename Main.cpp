@@ -60,14 +60,21 @@ void readCommand1(int argc, char *argv[], string &algorithm, string &filename, s
 
 void executeCommand1(string algorithm, string filename, string output_par, int &comparison, double &time)
 {
-    ifstream ifs;
-    ifs.open(filename);
+    ifstream fileIn;
+    fileIn.open(filename);
     int n;
-    ifs >> n;
-    int a[n];
-    for (int i = 0; i < n; i++)
-        ifs >> a[i];
-    ifs.close();
+    int* a;
+    if (fileIn.is_open())
+    {
+        fileIn >> n;
+        fileIn.ignore();
+        a = new int [n];
+        for (int i = 0; i < n; i++)
+            fileIn >> a[i];
+    }
+    else 
+        cout << "No file is found \n";
+    fileIn.close();
     checkAlgorithm(algorithm, a, n, comparison, time);
     cout << "ALGORITHM MODE\n";
     cout << "Algorithm:\n";
@@ -237,6 +244,48 @@ void command3(string algorithm, int inputSize, string outputParam)
     }
 }
 
+void readCommand4(int argc, char* argv[], string& algorithm1, string& algorithm2, string& filename)
+{
+    algorithm1 = argv[2];
+    algorithm2 = argv[3];
+    filename = argv[4]; 
+}
+
+void executeCommand4(string algorithm1, string algorithm2, string filename)
+{
+    ifstream fileIn;
+    fileIn.open(filename);
+    int n;
+    int* a;
+    if (fileIn.is_open())
+    {
+        fileIn >> n;
+        fileIn.ignore();
+        a = new int [n];
+        for (int i = 0; i < n; i++)
+            fileIn >> a[i];
+    }
+    else 
+        cout << "No file is found \n";
+    fileIn.close();
+    
+    int comparison1 = 0;
+    double time1 = 0;
+    int comparison2 = 0;
+    
+    double time2 = 0;
+    checkAlgorithm(algorithm1, a, n, comparison1, time1);
+    checkAlgorithm(algorithm2, a, n, comparison2, time2);
+
+    cout << "COMPARE MODE" << endl;
+    cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
+    cout << "Input file: " << filename << endl;
+    cout << "Input size: " << n << endl;
+    cout << "--------------------------------------\n";
+    cout << "Running time: " << time1 << " | " << time2 << endl;
+    cout << "Comparisons: " << comparison1 << " | " << comparison2 << endl;
+}
+
 int option(int argc, char *argv[])
 {
     if (argc == 4)
@@ -266,7 +315,7 @@ int option(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    string algorithm;
+    string algorithm, algorithm1, algorithm2;
     string filename;
     string output_par;
     int comparison;
@@ -290,6 +339,8 @@ int main(int argc, char *argv[])
     }
     else if (Option == 4)
     {
+        readCommand4(argc, argv, algorithm1, algorithm2, filename);
+        executeCommand4(algorithm1, algorithm2, filename);
     }
     else if (Option == 5)
     {
