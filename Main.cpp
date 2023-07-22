@@ -72,8 +72,6 @@ void executeCommand1(string algorithm, string filename, string output_par, int &
         for (int i = 0; i < n; i++)
             fileIn >> a[i];
     }
-    else 
-        cout << "No file is found \n";
     fileIn.close();
     checkAlgorithm(algorithm, a, n, comparison, time);
     cout << "ALGORITHM MODE\n";
@@ -258,7 +256,6 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     int* a;
     if (!fileIn.is_open())
     {
-        cout << "No file is found \n";
         return;
     }
     fileIn >> n;
@@ -266,7 +263,6 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     a = new int [n];
     for (int i = 0; i < n; i++)
     fileIn >> a[i]; 
-    cout << "No file is found \n";
     fileIn.close();
     
     int comparison1 = 0;
@@ -397,6 +393,8 @@ int main(int argc, char *argv[])
     string algorithm, algorithm1, algorithm2;
     string filename;
     string output_par;
+    string order;
+    int n;
     int comparison;
     double time;
     int Option = option2(argc, argv);
@@ -420,10 +418,12 @@ int main(int argc, char *argv[])
     {
         readCommand4(argc, argv, algorithm1, algorithm2, filename);
         executeCommand4(algorithm1, algorithm2, filename);
-        cout << algorithm1 << " " << algorithm2 << " " << filename;
     }
     else if (Option == 5)
     {
+        readCommand5(argc, argv, algorithm1, algorithm2, n, order);
+        executeCommand5(algorithm1, algorithm2, n, order);
+        cout << algorithm1 << " " << algorithm2 << " " << n << " " << order;
     }
     return 0;
 }
