@@ -68,7 +68,7 @@ void flash_sort(int a[], int n, int& total_comp)
         //k is the class position of a[i]
         int k = floor((m - 1) * (a[i] - min) / (max - min));
         //when i >= l[k] means that a[i] is on correct position, and increase i to check next element
-        while (++total_comp && i >= l[k]);
+        while (++total_comp && i >= l[k])
         {
             i++;
             k = floor((m - 1) * (a[i] - min) / (max - min));
