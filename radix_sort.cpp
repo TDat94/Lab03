@@ -10,7 +10,7 @@ int findMax(int arr[], int size)
     return max;
 }
 
-void countingSort(int arr[], int size, int exp, int &comparison)
+void countingSort(int arr[], int size, int exp, long long&comparison)
 {
     const int RADIX = 10; // The base of the radix system
 
@@ -51,7 +51,7 @@ void countingSort(int arr[], int size, int exp, int &comparison)
     comparison++;
 }
 
-void radixSort(int arr[], int size, int &total_comparison)
+void radixSort(int arr[], int size, long long&total_comparison)
 {
     int comparison = 0; // Local comparison count for each call of countingSort
 
@@ -67,7 +67,7 @@ void radixSort(int arr[], int size, int &total_comparison)
     total_comparison++;
 }
 
-void measure_radixSort(int arr[], int n, double &time, int &comparison)
+void measure_radixSort(int arr[], int n, double &time, long long&comparison)
 {
     clock_t start = clock();
     radixSort(arr, n, comparison);
