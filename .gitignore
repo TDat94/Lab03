@@ -1,3 +1,5 @@
 test.cpp
-/.vscode
+.vscode
 test.exe
+*.exe
+*.txt

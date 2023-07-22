@@ -67,6 +67,3 @@ void measure_selection_sort(int arr[], int size, int &comparison, double &time);
 // Shell Sort
 void shell_sort(int arr[], int size, int &comparison);
 void measure_shell_sort(int arr[], int size, int &comparison, double &time);
-
-// Command 2
-void command2(string algorithm, int inputSize, string inputOrder, string outputParam);

@@ -96,9 +96,19 @@ void executeCommand1(string algorithm, string filename, string output_par, int &
     ofs.close();
 }
 
-void command2(string algorithm, int inputSize, string inputOrder, string outputParam)
+void readCommand2(int argc, char *argv[], string &algorithm, int &inputSize, string &order, string &output_par)
 {
-    cout << "ALGORITHM MODE\n";
+    algorithm = argv[2];
+    inputSize = stoi(string(argv[3]));
+    order = argv[4];
+    output_par = argv[5];
+}
+
+void executeCommand2(string algorithm, int inputSize, string inputOrder, string outputParam)
+{
+    ofstream file;
+    file.open("input.txt");
+    cout << "ALGORITHM MODE" << endl;
     cout << "Algorithm: " << algorithm << endl;
     cout << "Input size: " << inputSize << endl;
     cout << "Input order: " << inputOrder << endl;
@@ -123,7 +133,17 @@ void command2(string algorithm, int inputSize, string inputOrder, string outputP
     else
     {
         GenerateData(arr, inputSize, -1);
+        return;
     }
+
+    file << inputSize << endl;
+
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
+    }
+
+    file.close();
+
     double time = 0;
     int comparison = 0;
 
@@ -147,17 +167,31 @@ void command2(string algorithm, int inputSize, string inputOrder, string outputP
     }
 }
 
-void command3(string algorithm, int inputSize, string outputParam)
+void readCommand3(int argc, char *argv[], string &algorithm, int &inputSize, string &output_par)
 {
+    algorithm = argv[2];
+    inputSize = stoi(string(argv[3]));
+    output_par = argv[4];
+}
+
+void executeCommand3(string algorithm, int inputSize, string outputParam)
+{
+    ofstream file;
     int *arr = new int[inputSize];
     cout << "ALGORITHM MODE\n";
     cout << "Algorithm: " << algorithm << endl;
     cout << "Input size: " << inputSize << endl;
     cout << "--------------------------------------\n";
     cout << "Input order: Randomize" << endl;
+    file.open("input_1.txt");
     int comparison = 0;
     double time = 0;
     GenerateData(arr, inputSize, 0);
+    file << inputSize << endl;
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
+    }
+    file.close();
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
     int output = checkOutputParam(outputParam);
     switch (output)
@@ -176,9 +210,45 @@ void command3(string algorithm, int inputSize, string outputParam)
         cout << "Invalid parameter found!" << endl;
         break;
     }
+    cout << "--------------------------------------\n";
+    cout << "Input order: Nearly Sorted" << endl;
+    file.open("input_2.txt");
+    comparison = 0;
+    time = 0;
+    GenerateData(arr, inputSize, 3);
+    file << inputSize << endl;
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
+    }
+    file.close();
+    checkAlgorithm(algorithm, arr, inputSize, comparison, time);
+    switch (output)
+    {
+    case 0:
+        cout << "Running time: " << time << endl;
+        cout << "Comparisons: " << comparison << endl;
+        break;
+    case 1:
+        cout << "Running time: " << time << endl;
+        break;
+    case 2:
+        cout << "Comparisons: " << comparison << endl;
+        break;
+    case -1:
+        cout << "Invalid parameter found!" << endl;
+        break;
+    }
+    cout << "--------------------------------------\n";
+    cout << "Input order: Sorted" << endl;
+    file.open("input_3.txt");
     comparison = 0;
     time = 0;
     GenerateData(arr, inputSize, 1);
+    file << inputSize << endl;
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
+    }
+    file.close();
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
     switch (output)
     {
@@ -198,31 +268,15 @@ void command3(string algorithm, int inputSize, string outputParam)
     }
     cout << "--------------------------------------\n";
     cout << "Input order: Reverse" << endl;
+    file.open("input_4.txt");
     comparison = 0;
     time = 0;
     GenerateData(arr, inputSize, 2);
-    checkAlgorithm(algorithm, arr, inputSize, comparison, time);
-    switch (output)
-    {
-    case 0:
-        cout << "Running time: " << time << endl;
-        cout << "Comparisons: " << comparison << endl;
-        break;
-    case 1:
-        cout << "Running time: " << time << endl;
-        break;
-    case 2:
-        cout << "Comparisons: " << comparison << endl;
-        break;
-    case -1:
-        cout << "Invalid parameter found!" << endl;
-        break;
+    file << inputSize << endl;
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
     }
-    cout << "--------------------------------------\n";
-    cout << "Input order: Nearly Sorted" << endl;
-    comparison = 0;
-    time = 0;
-    GenerateData(arr, inputSize, 3);
+    file.close();
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
     switch (output)
     {
@@ -357,8 +411,7 @@ int option(int argc, char *argv[])
         else if (strcmp(argv[1], "-c") == 0)
             return 5;
     }
-    else 
-        return 0;
+    return 0;
 }
 
 int main(int argc, char *argv[])
@@ -383,9 +436,13 @@ int main(int argc, char *argv[])
     }
     else if (Option == 2)
     {
+        readCommand2(argc, argv, algorithm, n, order, output_par);
+        executeCommand2(algorithm, n, order, output_par);
     }
     else if (Option == 3)
     {
+        readCommand3(argc, argv, algorithm, n, output_par);
+        executeCommand3(algorithm, n, output_par);
     }
     else if (Option == 4)
     {
