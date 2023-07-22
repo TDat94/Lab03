@@ -37,6 +37,7 @@ void radixSort(int arr[], int size, long long& total_comp);
 void measure_radixSort(int arr[], int n, double &time, long long&comparison);
 
 // Quick Sort
+int chooseMiddlePivot(int arr[], int low, int high);
 int partition(int arr[], int low, int high, long long& comparison);
 void quickSort(int arr[], int low, int high, long long& total_comparison);
 void measure_quickSort(int arr[], int n, long long& total_comparison, double& time);
