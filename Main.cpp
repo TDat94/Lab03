@@ -77,7 +77,7 @@ void executeCommand1(string algorithm, string filename, string output_par, int &
     fileIn.close();
     checkAlgorithm(algorithm, a, n, comparison, time);
     cout << "ALGORITHM MODE\n";
-    cout << "Algorithm:\n";
+    cout << "Algorithm: " << algorithm << "\n";
     cout << "Input file: " << filename << "\n";
     cout << "Input size: " << n << "\n";
     cout << "--------------------------------------\n";
@@ -257,16 +257,17 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     fileIn.open(filename);
     int n;
     int* a;
-    if (fileIn.is_open())
+    if (!fileIn.is_open())
     {
-        fileIn >> n;
-        fileIn.ignore();
-        a = new int [n];
-        for (int i = 0; i < n; i++)
-            fileIn >> a[i];
-    }
-    else 
         cout << "No file is found \n";
+        return;
+    }
+    fileIn >> n;
+    fileIn.ignore();
+    a = new int [n];
+    for (int i = 0; i < n; i++)
+    fileIn >> a[i]; 
+    cout << "No file is found \n";
     fileIn.close();
     
     int comparison1 = 0;
@@ -284,6 +285,8 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     cout << "--------------------------------------\n";
     cout << "Running time: " << time1 << " | " << time2 << endl;
     cout << "Comparisons: " << comparison1 << " | " << comparison2 << endl;
+
+    delete [] a;
 }
 
 int option(int argc, char *argv[])
@@ -341,6 +344,7 @@ int main(int argc, char *argv[])
     {
         readCommand4(argc, argv, algorithm1, algorithm2, filename);
         executeCommand4(algorithm1, algorithm2, filename);
+        //cout << algorithm1 << " " << algorithm2 << " " << filename;
     }
     else if (Option == 5)
     {
