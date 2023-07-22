@@ -371,6 +371,7 @@ int option2(int argc, char* argv[])
         if (strcmp(argv[1], "-a") == 0)
         {
             string temp;
+            temp = argv[3];
             int find = temp.find('.');
             if (find != string::npos)
                 return 1;
