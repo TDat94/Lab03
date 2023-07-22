@@ -364,6 +364,33 @@ int option(int argc, char *argv[])
         return 0;
 }
 
+int option2(int argc, char* argv[])
+{
+    if (argc == 5)
+    {
+        if (strcmp(argv[1], "-a") == 0)
+        {
+            string temp;
+            int find = temp.find('.');
+            if (find != string::npos)
+                return 1;
+            else
+                return 3;
+        }
+        if (strcmp(argv[1], "-c") == 0)
+            return 4;
+    }
+    if (argc == 6)
+    {
+        if (strcmp(argv[1], "-a") == 0)
+            return 2;
+        else if (strcmp(argv[1], "-c") == 0)
+            return 5;
+    }
+    else 
+        return 0;
+}
+
 int main(int argc, char *argv[])
 {
     string algorithm, algorithm1, algorithm2;
@@ -371,7 +398,7 @@ int main(int argc, char *argv[])
     string output_par;
     int comparison;
     double time;
-    int Option = option(argc, argv);
+    int Option = option2(argc, argv);
     if (Option == 0)
     {
         cout << "This program is terminated due to invalid/unidentified command prompt.";
