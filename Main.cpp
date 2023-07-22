@@ -248,13 +248,12 @@ void readCommand4(int argc, char* argv[], string& algorithm1, string& algorithm2
 {
     algorithm1 = argv[2];
     algorithm2 = argv[3];
-    filename = argv[4]; 
+    filename = argv[4];
 }
 
 void executeCommand4(string algorithm1, string algorithm2, string filename)
 {
-    ifstream fileIn;
-    fileIn.open(filename);
+    ifstream fileIn(filename);
     int n;
     int* a;
     if (!fileIn.is_open())
@@ -344,7 +343,7 @@ int main(int argc, char *argv[])
     {
         readCommand4(argc, argv, algorithm1, algorithm2, filename);
         executeCommand4(algorithm1, algorithm2, filename);
-        //cout << algorithm1 << " " << algorithm2 << " " << filename;
+        cout << algorithm1 << " " << algorithm2 << " " << filename;
     }
     else if (Option == 5)
     {
