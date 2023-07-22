@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void shell_sort(int arr[], int size, int &comparison){
+void shell_sort(int arr[], int size, long long &comparison){
     //Split array into sub-arrays using intervals
     for(int interval = size / 2; interval >= 1; interval /= 2, ++comparison){
         //Insertion sort
@@ -21,7 +21,7 @@ void shell_sort(int arr[], int size, int &comparison){
     }
 }
 
-void measure_shell_sort(int arr[], int size, int &comparison, double &time){
+void measure_shell_sort(int arr[], int size, long long &comparison, double &time){
     comparison = 0;
     clock_t start = clock();
     shell_sort(arr, size, comparison);

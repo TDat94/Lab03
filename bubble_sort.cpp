@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void bubble_sort(int arr[], int n, int &comparison)
+void bubble_sort(int arr[], int n, long long &comparison)
 {
     comparison=0;
     for (int j = 0; ++comparison && j < n; j++)
@@ -19,7 +19,7 @@ void bubble_sort(int arr[], int n, int &comparison)
     }
 }
 
-void measure_bubble_sort(int arr[], int n, double &time, int &comparison)
+void measure_bubble_sort(int arr[], int n, double &time, long long &comparison)
 {
     clock_t start = clock();
     bubble_sort(arr, n, comparison);

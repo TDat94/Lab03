@@ -1,28 +1,28 @@
 #include "lib.h"
 
-void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &time)
+void checkAlgorithm(string algorithm, int a[], int n, long long &comparison, double &time)
 {
-    if (algorithm == "selection_sort")
+    if (algorithm == "selection-sort")
         measure_selection_sort(a, n, comparison, time);
-    else if (algorithm == "bubble_sort")
+    else if (algorithm == "bubble-sort")
         measure_bubble_sort(a, n, time, comparison);
-    else if (algorithm == "counting_sort")
+    else if (algorithm == "counting-sort")
         measure_counting_sort(a, n, time, comparison);
-    else if (algorithm == "flash_sort")
+    else if (algorithm == "flash-sort")
         measure_flash_sort(a, n, time, comparison);
-    else if (algorithm == "heap_sort")
+    else if (algorithm == "heap-sort")
         measure_heap_sort(a, n, time, comparison);
-    else if (algorithm == "insertion_sort")
+    else if (algorithm == "insertion-sort")
         measure_insertion_sort(a, n, time, comparison);
-    else if (algorithm == "merge_sort")
+    else if (algorithm == "merge-sort")
         measure_merge_sort(a, n, comparison, time);
-    else if (algorithm == "quick_sort")
+    else if (algorithm == "quick-sort")
         measure_quickSort(a, n, comparison, time);
-    else if (algorithm == "radix_sort")
+    else if (algorithm == "radix-sort")
         measure_radixSort(a, n, time, comparison);
-    else if (algorithm == "shell_sort")
+    else if (algorithm == "shell-sort")
         measure_shell_sort(a, n, comparison, time);
-    else if (algorithm == "shaker_sort")
+    else if (algorithm == "shaker-sort")
         measure_shaker_sort(a, n, time, comparison);
     else
     {
@@ -58,7 +58,7 @@ void readCommand1(int argc, char *argv[], string &algorithm, string &filename, s
     output_par = argv[4];
 }
 
-void executeCommand1(string algorithm, string filename, string output_par, int &comparison, double &time)
+void executeCommand1(string algorithm, string filename, string output_par, long long &comparison, double &time)
 {
     ifstream fileIn;
     fileIn.open(filename);
@@ -125,7 +125,7 @@ void command2(string algorithm, int inputSize, string inputOrder, string outputP
         GenerateData(arr, inputSize, -1);
     }
     double time = 0;
-    int comparison = 0;
+    long long comparison = 0;
 
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
     int output = checkOutputParam(outputParam);
@@ -155,7 +155,7 @@ void command3(string algorithm, int inputSize, string outputParam)
     cout << "Input size: " << inputSize << endl;
     cout << "--------------------------------------\n";
     cout << "Input order: Randomize" << endl;
-    int comparison = 0;
+    long long comparison = 0;
     double time = 0;
     GenerateData(arr, inputSize, 0);
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
@@ -265,9 +265,9 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     fileIn >> a[i]; 
     fileIn.close();
     
-    int comparison1 = 0;
+    long long comparison1 = 0;
     double time1 = 0;
-    int comparison2 = 0;
+    long long comparison2 = 0;
     
     double time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
@@ -317,7 +317,7 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
         cout << "Order is not found \n";
         return;
     }
-    int comparison1 = 0, comparison2 = 0;
+    long long comparison1 = 0, comparison2 = 0;
     double time1 = 0, time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
     checkAlgorithm(algorithm2, a, n, comparison2, time2);
@@ -334,33 +334,6 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
 }
 
 int option(int argc, char *argv[])
-{
-    if (argc == 4)
-    {
-        if (strcmp(argv[2], "-a") == 0)
-        {
-            string temp = argv[3];
-            int find = temp.find('.');
-            if (find != string::npos)
-                return 1;
-            else
-                return 3;
-        }
-        else if (strcmp(argv[2], "-c") == 0)
-            return 4;
-    }
-    else if (argc == 5)
-    {
-        if (strcmp(argv[2], "-a") == 0)
-            return 2;
-        else if (strcmp(argv[2], "-c") == 0)
-            return 5;
-    }
-    else
-        return 0;
-}
-
-int option2(int argc, char* argv[])
 {
     if (argc == 5)
     {
@@ -395,9 +368,9 @@ int main(int argc, char *argv[])
     string output_par;
     string order;
     int n;
-    int comparison;
+    long long comparison;
     double time;
-    int Option = option2(argc, argv);
+    int Option = option(argc, argv);
     if (Option == 0)
     {
         cout << "This program is terminated due to invalid/unidentified command prompt.";
@@ -410,9 +383,11 @@ int main(int argc, char *argv[])
     }
     else if (Option == 2)
     {
+        command2(argv[2], stoi(argv[3]), argv[4], argv[5]);
     }
     else if (Option == 3)
     {
+        command3(argv[2], stoi(argv[3]), argv[4]);
     }
     else if (Option == 4)
     {
