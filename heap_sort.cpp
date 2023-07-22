@@ -33,7 +33,7 @@ void heapify(int arr[], int N, int i, long long& comparison) //source: geeks for
 
 void heap_sort(int arr[], int N, long long & total_comp)
 {
-    int comparison_heap = 0;
+    long long comparison_heap = 0;
     total_comp = 0;
     // Build heap (rearrange array)
     for (int i = N / 2 - 1; i >= 0; i--)

@@ -24,7 +24,7 @@ void quickSort(int arr[], int low, int high, long long& total_comparison)
 {
     if (low < high)
     {
-        int comparison = 0;  // Initialize comparison count for each recursive call
+        long long comparison = 0;  // Initialize comparison count for each recursive call
         int pivotIndex = partition(arr, low, high, comparison);
         total_comparison += comparison;  // Add comparison count to the total
 

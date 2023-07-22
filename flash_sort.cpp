@@ -23,7 +23,7 @@
 
 void flash_sort(int a[], int n, long long& total_comp)
 {
-    int comparison_flash = 0;
+    long long comparison_flash = 0;
     total_comp = 0;
 
     //Find max and min of array

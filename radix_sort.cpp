@@ -53,7 +53,7 @@ void countingSort(int arr[], int size, int exp, long long&comparison)
 
 void radixSort(int arr[], int size, long long&total_comparison)
 {
-    int comparison = 0; // Local comparison count for each call of countingSort
+    long long comparison = 0; // Local comparison count for each call of countingSort
 
     // Find the maximum number to know the number of digits
     int max = findMax(arr, size);
