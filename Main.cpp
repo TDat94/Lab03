@@ -2,27 +2,27 @@
 
 void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &time)
 {
-    if (algorithm == "selection_sort")
+    if (algorithm == "selection-sort")
         measure_selection_sort(a, n, comparison, time);
-    else if (algorithm == "bubble_sort")
+    else if (algorithm == "bubble-sort")
         measure_bubble_sort(a, n, time, comparison);
-    else if (algorithm == "counting_sort")
+    else if (algorithm == "counting-sort")
         measure_counting_sort(a, n, time, comparison);
-    else if (algorithm == "flash_sort")
+    else if (algorithm == "flash-sort")
         measure_flash_sort(a, n, time, comparison);
-    else if (algorithm == "heap_sort")
+    else if (algorithm == "heap-sort")
         measure_heap_sort(a, n, time, comparison);
-    else if (algorithm == "insertion_sort")
+    else if (algorithm == "insertion-sort")
         measure_insertion_sort(a, n, time, comparison);
-    else if (algorithm == "merge_sort")
+    else if (algorithm == "merge-sort")
         measure_merge_sort(a, n, comparison, time);
-    else if (algorithm == "quick_sort")
+    else if (algorithm == "quick-sort")
         measure_quickSort(a, n, comparison, time);
-    else if (algorithm == "radix_sort")
+    else if (algorithm == "radix-sort")
         measure_radixSort(a, n, time, comparison);
-    else if (algorithm == "shell_sort")
+    else if (algorithm == "shell-sort")
         measure_shell_sort(a, n, comparison, time);
-    else if (algorithm == "shaker_sort")
+    else if (algorithm == "shaker-sort")
         measure_shaker_sort(a, n, time, comparison);
     else
     {
@@ -335,33 +335,6 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
 
 int option(int argc, char *argv[])
 {
-    if (argc == 4)
-    {
-        if (strcmp(argv[2], "-a") == 0)
-        {
-            string temp = argv[3];
-            int find = temp.find('.');
-            if (find != string::npos)
-                return 1;
-            else
-                return 3;
-        }
-        else if (strcmp(argv[2], "-c") == 0)
-            return 4;
-    }
-    else if (argc == 5)
-    {
-        if (strcmp(argv[2], "-a") == 0)
-            return 2;
-        else if (strcmp(argv[2], "-c") == 0)
-            return 5;
-    }
-    else
-        return 0;
-}
-
-int option2(int argc, char* argv[])
-{
     if (argc == 5)
     {
         if (strcmp(argv[1], "-a") == 0)
@@ -397,7 +370,7 @@ int main(int argc, char *argv[])
     int n;
     int comparison;
     double time;
-    int Option = option2(argc, argv);
+    int Option = option(argc, argv);
     if (Option == 0)
     {
         cout << "This program is terminated due to invalid/unidentified command prompt.";
