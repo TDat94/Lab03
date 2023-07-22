@@ -423,7 +423,7 @@ int main(int argc, char *argv[])
     {
         readCommand5(argc, argv, algorithm1, algorithm2, n, order);
         executeCommand5(algorithm1, algorithm2, n, order);
-        cout << algorithm1 << " " << algorithm2 << " " << n << " " << order;
+        //cout << algorithm1 << " " << algorithm2 << " " << n << " " << order;
     }
     return 0;
 }
