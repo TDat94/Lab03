@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void selection_sort(int arr[], int size, int &comparison){
+void selection_sort(int arr[], int size, long long &comparison){
     for(int i = 0; i < size - 1; ++comparison, i++){
         int min = arr[i];
         int minIndex = i;
@@ -16,7 +16,7 @@ void selection_sort(int arr[], int size, int &comparison){
     }
 }
 
-void measure_selection_sort(int arr[], int size, int &comparison, double &time){
+void measure_selection_sort(int arr[], int size, long long &comparison, double &time){
     comparison = 0;
     clock_t start = clock();
     selection_sort(arr, size, comparison);

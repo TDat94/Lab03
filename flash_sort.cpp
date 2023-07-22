@@ -21,7 +21,7 @@
 //     comparison += n; //count comparison in for loop
 // }
 
-void flash_sort(int a[], int n, int& total_comp)
+void flash_sort(int a[], int n, long long& total_comp)
 {
     int comparison_flash = 0;
     total_comp = 0;
@@ -89,7 +89,7 @@ void flash_sort(int a[], int n, int& total_comp)
     total_comp += comparison_flash;
 }
 
-void measure_flash_sort(int arr[], int n, double &time, int &total_comp)
+void measure_flash_sort(int arr[], int n, double &time, long long &total_comp)
 {
     clock_t start = clock();
     flash_sort(arr, n, total_comp);
