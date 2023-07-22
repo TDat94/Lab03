@@ -3,6 +3,7 @@
 #include <cmath>
 #include <time.h>
 #include <cstring>
+#include <string>
 #pragma once
 
 using namespace std;
