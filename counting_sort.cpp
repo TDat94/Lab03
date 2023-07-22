@@ -1,6 +1,6 @@
 #include "lib.h"
 
-int findMax(int arr[], int n, long long &comparison)
+int findMax_(int arr[], int n, long long &comparison)
 {
     int Max=-1e9;
     for (int i=0; ++comparison && i<n; i++)
@@ -21,7 +21,7 @@ int findMin(int arr[], int n, long long &comparison)
 void counting_sort(int arr[], int n, long long &comparison)
 {
     comparison=0;
-    int Max=findMax(arr, n, comparison);
+    int Max=findMax_(arr, n, comparison);
     int Min=findMin(arr, n, comparison);
     int *elements=new int[Max-Min+1];
     for (int i=0;++comparison && i<Max-Min+1; i++)
