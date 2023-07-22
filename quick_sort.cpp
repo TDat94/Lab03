@@ -1,6 +1,6 @@
 #include "lib.h"
 
-int partition(int arr[], int low, int high, int& comparison)
+int partition(int arr[], int low, int high, long long& comparison)
 {
     int pivot = arr[high];  // Pivot is the last element of the list
     int i = low - 1;
@@ -11,7 +11,7 @@ int partition(int arr[], int low, int high, int& comparison)
         if (arr[j] < pivot)
         {
             i++;
-            std::swap(arr[i], arr[j]);
+            swap(arr[i], arr[j]);
         }
     }
     comparison++;
@@ -20,7 +20,7 @@ int partition(int arr[], int low, int high, int& comparison)
     return i + 1;
 }
 
-void quickSort(int arr[], int low, int high, int& total_comparison)
+void quickSort(int arr[], int low, int high, long long& total_comparison)
 {
     if (low < high)
     {
@@ -34,7 +34,7 @@ void quickSort(int arr[], int low, int high, int& total_comparison)
     total_comparison++;
 }
 
-void measure_quickSort(int arr[], int n, int& total_comparison, double& time)
+void measure_quickSort(int arr[], int n, long long& total_comparison, double& time)
 {
     clock_t start = clock();
     quickSort(arr, 0, n - 1, total_comparison);
