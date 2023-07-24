@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void merge(int arr[], int left, int right, int middle, int &comparison){
+void merge(int arr[], int left, int right, int middle, long long &comparison){
     int leftSize = middle - left + 1;
     int rightSize = right - middle;
     int* leftArr = new int[leftSize];
@@ -35,7 +35,7 @@ void merge(int arr[], int left, int right, int middle, int &comparison){
     }
 }
 
-void merge_sort(int arr[], int left, int right, int &comparison){
+void merge_sort(int arr[], int left, int right, long long &comparison){
     if((comparison++, left < right)){
         int middle = (left + right) / 2;
         merge_sort(arr, left, middle, comparison);
@@ -44,7 +44,7 @@ void merge_sort(int arr[], int left, int right, int &comparison){
     }
 }
 
-void measure_merge_sort(int arr[], int size, int &comparison, double &time){
+void measure_merge_sort(int arr[], int size, long long &comparison, double &time){
     comparison = 0;
     clock_t start = clock();
     merge_sort(arr, 0, size - 1, comparison);

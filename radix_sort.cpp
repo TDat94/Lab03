@@ -1,16 +1,20 @@
 #include "lib.h"
 
 // Function to find the maximum element in the array
-int findMax(int arr[], int size)
+int findMax(int arr[], int size, long long& comparison)
 {
     int max = arr[0];
     for (int i = 1; i < size; i++)
+    {
+        comparison+=2;
         if (arr[i] > max)
             max = arr[i];
+    }
+    comparison++;
     return max;
 }
 
-void countingSort(int arr[], int size, int exp, int &comparison)
+void countingSort(int arr[], int size, int exp, long long&comparison)
 {
     const int RADIX = 10; // The base of the radix system
 
@@ -51,12 +55,12 @@ void countingSort(int arr[], int size, int exp, int &comparison)
     comparison++;
 }
 
-void radixSort(int arr[], int size, int &total_comparison)
+void radixSort(int arr[], int size, long long&total_comparison)
 {
-    int comparison = 0; // Local comparison count for each call of countingSort
+    long long comparison = 0; // Local comparison count for each call of countingSort
 
     // Find the maximum number to know the number of digits
-    int max = findMax(arr, size);
+    int max = findMax(arr, size, comparison);
 
     // Perform counting sort for every digit
     for (int exp = 1; max / exp > 0; exp *= 10)
@@ -67,7 +71,7 @@ void radixSort(int arr[], int size, int &total_comparison)
     total_comparison++;
 }
 
-void measure_radixSort(int arr[], int n, double &time, int &comparison)
+void measure_radixSort(int arr[], int n, double &time, long long&comparison)
 {
     clock_t start = clock();
     radixSort(arr, n, comparison);

@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void checkAlgorithm(string algorithm, int a[], int n, int &comparison, double &time)
+void checkAlgorithm(string algorithm, int a[], int n, long long &comparison, double &time)
 {
     if (algorithm == "selection-sort")
         measure_selection_sort(a, n, comparison, time);
@@ -58,7 +58,7 @@ void readCommand1(int argc, char *argv[], string &algorithm, string &filename, s
     output_par = argv[4];
 }
 
-void executeCommand1(string algorithm, string filename, string output_par, int &comparison, double &time)
+void executeCommand1(string algorithm, string filename, string output_par, long long &comparison, double &time)
 {
     ifstream fileIn;
     fileIn.open(filename);
@@ -145,9 +145,15 @@ void executeCommand2(string algorithm, int inputSize, string inputOrder, string 
     file.close();
 
     double time = 0;
-    int comparison = 0;
+    long long comparison = 0;
 
     checkAlgorithm(algorithm, arr, inputSize, comparison, time);
+    file.open("output.txt");
+    file << inputSize << endl;
+    for(int i = 0; i < inputSize; i++){
+        file << arr[i] << " ";
+    }
+    file.close();
     int output = checkOutputParam(outputParam);
     switch (output)
     {
@@ -183,8 +189,12 @@ void executeCommand3(string algorithm, int inputSize, string outputParam)
     cout << "Input size: " << inputSize << endl;
     cout << "--------------------------------------\n";
     cout << "Input order: Randomize" << endl;
+<<<<<<< HEAD
     file.open("input_1.txt");
     int comparison = 0;
+=======
+    long long comparison = 0;
+>>>>>>> fc07729878ec39abcaa4643864307f4b74bb930f
     double time = 0;
     GenerateData(arr, inputSize, 0);
     file << inputSize << endl;
@@ -319,9 +329,9 @@ void executeCommand4(string algorithm1, string algorithm2, string filename)
     fileIn >> a[i]; 
     fileIn.close();
     
-    int comparison1 = 0;
+    long long comparison1 = 0;
     double time1 = 0;
-    int comparison2 = 0;
+    long long comparison2 = 0;
     
     double time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
@@ -371,7 +381,7 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
         cout << "Order is not found \n";
         return;
     }
-    int comparison1 = 0, comparison2 = 0;
+    long long comparison1 = 0, comparison2 = 0;
     double time1 = 0, time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
     checkAlgorithm(algorithm2, a, n, comparison2, time2);
@@ -421,7 +431,7 @@ int main(int argc, char *argv[])
     string output_par;
     string order;
     int n;
-    int comparison;
+    long long comparison;
     double time;
     int Option = option(argc, argv);
     if (Option == 0)
@@ -436,6 +446,7 @@ int main(int argc, char *argv[])
     }
     else if (Option == 2)
     {
+<<<<<<< HEAD
         readCommand2(argc, argv, algorithm, n, order, output_par);
         executeCommand2(algorithm, n, order, output_par);
     }
@@ -443,6 +454,13 @@ int main(int argc, char *argv[])
     {
         readCommand3(argc, argv, algorithm, n, output_par);
         executeCommand3(algorithm, n, output_par);
+=======
+        command2(argv[2], stoi(argv[3]), argv[4], argv[5]);
+    }
+    else if (Option == 3)
+    {
+        command3(argv[2], stoi(argv[3]), argv[4]);
+>>>>>>> fc07729878ec39abcaa4643864307f4b74bb930f
     }
     else if (Option == 4)
     {
