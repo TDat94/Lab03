@@ -1,92 +1,77 @@
 #include "lib.h"
 
-// void insertion_sort(int arr[], int n, int& comparison) //source: geeks for geeks
-// {
-//     comparison = 0;
-//     int i, key, j;
-//     for (i = 1; i < n; i++) {
-//         key = arr[i];
-//         j = i - 1;
+void flash_sort(int arr[], int n, long long& totalcomp) {
+    int max = 0, min = arr[0];
+    int m = std::floor(0.45 * n);
+    int* l = new int[m]();
 
-//         // Move elements of arr[0..i-1],
-//         // that are greater than key,
-//         // to one position ahead of their
-//         // current position
-//         while ((++comparison && j >= 0) && (++comparison && arr[j] > key)) {
-//             arr[j + 1] = arr[j];
-//             j = j - 1;
-//         }
-//         arr[j + 1] = key;
-//     }
-//     comparison += n; //count comparison in for loop
-// }
-
-void flash_sort(int a[], int n, long long& total_comp)
-{
-    long long comparison_flash = 0;
-    total_comp = 0;
-
-    //Find max and min of array
-    int max = 0;
-    int min = a[0];
-    for (int i = 1; i < n; i++)
-    {
-        if (++total_comp && a[i] < min)
-            min = a[i];
-        if (++total_comp && a[i] > max)
-            max = a[i];
+    for (int i = 1; i < n; ++i) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+        if (arr[i] > arr[max]) {
+            max = i;
+        }
+        totalcomp += 2;
     }
-    total_comp += n; //count comparison in for loop
+    totalcomp += n;
 
-    //if all of elements in array is similar
-    if (++total_comp && max == min)
+    if (min == arr[max]) {
+        delete[] l; // Free the memory allocated for the array l
         return;
-    
-    //create a dynamic array I has m elements. m is a class calculated by floor(0,45*n)
-    int m = floor(0.45*n);
-    int *l = new int [m]();
+    }
 
-    //count number of elements of all classes base on rule: a[j] will be in k = floor((m-1)*(a[j]-min)/(max-min))
-    for (int j = 0; j < n; j++)
-    {
-        int k = floor((m - 1) * (a[j] - min) / (max - min));
+    double c1 = (m - 1) / static_cast<double>(arr[max] - min);
+
+    for (int j = 0; j < n; ++j) {
+        int k = std::floor(c1 * (arr[j] - min));
         ++l[k];
     }
-    total_comp += n + 1;
+    totalcomp += n + 1;
 
-    //calculate the last position of class z based on: l[z] = l[z] + l[z+1]
-    for (int z = 1; z < m; z++)
-    {
-        l[z] += l[z-1];
+    for (int p = 1; p < m; ++p) {
+        l[p] = l[p] + l[p - 1];
     }
-    total_comp += m;
+    totalcomp += n+1;
 
-    //Permute
-    int move = 0, i = 0;
-    while (++total_comp && move < n - 1)
-    {
-        //k is the class position of a[i]
-        int k = floor((m - 1) * (a[i] - min) / (max - min));
-        //when i >= l[k] means that a[i] is on correct position, and increase i to check next element
-        while (++total_comp && i >= l[k])
-        {
-            i++;
-            k = floor((m - 1) * (a[i] - min) / (max - min));
+    int hold = arr[max];
+    arr[max] = arr[0];
+    arr[0] = hold;
+
+    // Permutation
+    int move = 0, t, flash;
+    int j = 0;
+    int k = m - 1;
+
+    while (++totalcomp && move < (n - 1)) {
+        while (++totalcomp && j > (l[k] - 1)) {
+            ++j;
+            k = std::floor(c1 * (arr[j] - min));
         }
-        int flash = a[i];
-
-        while (++total_comp && i != l[k])
-        {
-            k = floor((m - 1) * (flash - min) / (max - min));
-            --l[k];
-            int hold = a[l[k]];
-            a[l[k]] = flash;
+        if (k < 0)
+            break;
+        flash = arr[j];
+        while (++totalcomp && j != l[k]) {
+            k = std::floor(c1 * (flash - min));
+            hold = arr[t = --l[k]];
+            arr[t] = flash;
             flash = hold;
-            move++;
+            ++move;
         }
     }
-    insertion_sort(a, n, comparison_flash);
-    total_comp += comparison_flash;
+
+    // Insertion
+    for (j = 1; j < n; j++) {
+        hold = arr[j];
+        int i = j - 1;
+        while ((++totalcomp && i >= 0) && (++totalcomp && arr[i] > hold)) {
+            arr[i + 1] = arr[i--];
+        }
+        arr[i + 1] = hold;
+    }
+    totalcomp += n;
+
+    delete[] l; // Free the memory allocated for the array l
 }
 
 void measure_flash_sort(int arr[], int n, double &time, long long &total_comp)
