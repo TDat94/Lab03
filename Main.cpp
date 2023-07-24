@@ -189,12 +189,8 @@ void executeCommand3(string algorithm, int inputSize, string outputParam)
     cout << "Input size: " << inputSize << endl;
     cout << "--------------------------------------\n";
     cout << "Input order: Randomize" << endl;
-<<<<<<< HEAD
     file.open("input_1.txt");
-    int comparison = 0;
-=======
     long long comparison = 0;
->>>>>>> fc07729878ec39abcaa4643864307f4b74bb930f
     double time = 0;
     GenerateData(arr, inputSize, 0);
     file << inputSize << endl;
@@ -446,7 +442,6 @@ int main(int argc, char *argv[])
     }
     else if (Option == 2)
     {
-<<<<<<< HEAD
         readCommand2(argc, argv, algorithm, n, order, output_par);
         executeCommand2(algorithm, n, order, output_par);
     }
@@ -454,13 +449,6 @@ int main(int argc, char *argv[])
     {
         readCommand3(argc, argv, algorithm, n, output_par);
         executeCommand3(algorithm, n, output_par);
-=======
-        command2(argv[2], stoi(argv[3]), argv[4], argv[5]);
-    }
-    else if (Option == 3)
-    {
-        command3(argv[2], stoi(argv[3]), argv[4]);
->>>>>>> fc07729878ec39abcaa4643864307f4b74bb930f
     }
     else if (Option == 4)
     {

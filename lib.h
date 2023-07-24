@@ -17,30 +17,34 @@ void GenerateData(int a[], int n, int dataType);
 
 // Merge Sort
 void merge(int arr[], int left, int right, int middle, long long &comparison);
-void merge_sort(int arr[], int left, int right, long long&comparison);
-void measure_merge_sort(int arr[], int size, long long&comparison, double &time);
-
-// Shell Sort
+void merge_sort(int arr[], int left, int right, long long &comparison);
+void measure_merge_sort(int arr[], int size, long long &comparison, double &time);
 
 // Selection Sort
+void selection_sort(int arr[], int size, long long &comparison);
+void measure_selection_sort(int arr[], int size, long long &comparison, double &time);
+
+// Shell Sort
+void shell_sort(int arr[], int size, long long &comparison);
+void measure_shell_sort(int arr[], int size, long long &comparison, double &time);
 
 // Counting Sort
 int findMax_(int arr[], int n, long long &comparison);
 int findMin(int arr[], int n, long long &comparison);
 void counting_sort(int arr[], int n, long long &comparison);
-void measure_counting_sort(int arr[], int n, double &time, long long&comparison);
+void measure_counting_sort(int arr[], int n, double &time, long long &comparison);
 
 // Radix Sort
-int find_Max(int arr[], int size, long long& comparison);
-void countingSort(int arr[], int size, int exp, long long&comparison);
-void radixSort(int arr[], int size, long long& total_comp);
-void measure_radixSort(int arr[], int n, double &time, long long&comparison);
+int find_Max(int arr[], int size, long long &comparison);
+void countingSort(int arr[], int size, int exp, long long &comparison);
+void radixSort(int arr[], int size, long long &total_comp);
+void measure_radixSort(int arr[], int n, double &time, long long &comparison);
 
 // Quick Sort
 int chooseMiddlePivot(int arr[], int low, int high);
-int partition(int arr[], int low, int high, long long& comparison);
-void quickSort(int arr[], int low, int high, long long& total_comparison);
-void measure_quickSort(int arr[], int n, long long& total_comparison, double& time);
+int partition(int arr[], int low, int high, long long &comparison);
+void quickSort(int arr[], int low, int high, long long &total_comparison);
+void measure_quickSort(int arr[], int n, long long &total_comparison, double &time);
 
 // Bubble Sort
 void bubble_sort(int arr[], int n, long long &comparison);
@@ -51,25 +55,14 @@ void shaker_sort(int arr[], int n, long long &comparison);
 void measure_shaker_sort(int arr[], int n, double &time, long long &comparison);
 
 // Insertion Sort
-void insertion_sort(int arr[], int n, long long& comparison);
+void insertion_sort(int arr[], int n, long long &comparison);
 void measure_insertion_sort(int arr[], int n, double &time, long long &comparison);
 
 // Flash Sort
-void flash_sort(int a[], int n, long long& total_comp);
+void flash_sort(int a[], int n, long long &total_comp);
 void measure_flash_sort(int arr[], int n, double &time, long long &total_comp);
 
 // Heap Sort
-void heapify(int arr[], int N, int i, long long& comparison);
-void heap_sort(int arr[], int N, long long& total_comp);
+void heapify(int arr[], int N, int i, long long &comparison);
+void heap_sort(int arr[], int N, long long &total_comp);
 void measure_heap_sort(int arr[], int n, double &time, long long &total_comp);
-
-// Selection Sort
-void selection_sort(int arr[], int size, long long &comparison);
-void measure_selection_sort(int arr[], int size, long long &comparison, double &time);
-
-// Shell Sort
-void shell_sort(int arr[], int size, long long &comparison);
-void measure_shell_sort(int arr[], int size, long long &comparison, double &time);
-
-// Command 2
-void command2(string algorithm, int inputSize, string inputOrder, string outputParam);
