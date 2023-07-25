@@ -4,6 +4,7 @@
 #include <time.h>
 #include <cstring>
 #include <string>
+#include <random>
 #pragma once
 
 using namespace std;
