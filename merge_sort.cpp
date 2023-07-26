@@ -5,14 +5,14 @@ void merge(int arr[], int left, int right, int middle, long long &comparison){
     int rightSize = right - middle;
     int* leftArr = new int[leftSize];
     int* rightArr = new int[rightSize];
-    for(int i = 0; comparison++ && i < leftSize; ++comparison, i++){
+    for(int i = 0; (++comparison && i < leftSize); i++){
         leftArr[i] = arr[left + i];
     }
-    for(int j = 0; j < rightSize; ++comparison, j++){
+    for(int j = 0; (++comparison && j < rightSize);  j++){
         rightArr[j] = arr[middle + j + 1];
     }
     int i = 0, j = 0, key = left;
-    while((comparison += 2, i < leftSize) && j < rightSize){
+    while((comparison += 2 && i < leftSize && j < rightSize)){
         if(leftArr[i] < rightArr[j]){
             arr[key] = leftArr[i];
             i++;
@@ -23,12 +23,12 @@ void merge(int arr[], int left, int right, int middle, long long &comparison){
         }
         key++;
     }
-    while(++comparison, i < leftSize){
+    while(++comparison && i < leftSize){
         arr[key] = leftArr[i];
         i++;
         key++;
     }
-    while(++comparison, j < rightSize){
+    while(++comparison && j < rightSize){
         arr[key] = rightArr[j];
         j++;
         key++;
@@ -36,7 +36,7 @@ void merge(int arr[], int left, int right, int middle, long long &comparison){
 }
 
 void merge_sort(int arr[], int left, int right, long long &comparison){
-    if((comparison++, left < right)){
+    if((++comparison && left < right)){
         int middle = (left + right) / 2;
         merge_sort(arr, left, middle, comparison);
         merge_sort(arr, middle + 1, right, comparison);

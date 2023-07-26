@@ -2,9 +2,9 @@
 
 void shell_sort(int arr[], int size, long long &comparison){
     //Split array into sub-arrays using intervals
-    for(int interval = size / 2; interval >= 1; interval /= 2, ++comparison){
+    for(int interval = size / 2; (++comparison && interval >= 1); interval /= 2){
         //Insertion sort
-        for(int i = interval; i < size; i++, ++comparison){ 
+        for(int i = interval; (++comparison && i < size); i++){ 
         //Check from the interval to the end of array, that means
         //first loop would be from 4 if size is 9
         //second loop from 2
@@ -12,7 +12,7 @@ void shell_sort(int arr[], int size, long long &comparison){
         // => do an insertion sort with sub arrays.
             int temp = arr[i];
             int j = i - interval;
-            while((comparison += 2, j >= 0) && arr[j] > temp){
+            while(comparison += 2 && j >= 0 && arr[j] > temp){
                 arr[j + interval] = arr[j];
                 j = j - interval;
             }
