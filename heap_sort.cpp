@@ -36,16 +36,15 @@ void heap_sort(int arr[], int N, long long & total_comp)
     long long comparison_heap = 0;
     total_comp = 0;
     // Build heap (rearrange array)
-    for (int i = N / 2 - 1; i >= 0; i--)
+    for (int i = N / 2 - 1; ++total_comp && i >= 0; i--)
     {
         heapify(arr, N, i, comparison_heap);
         total_comp += comparison_heap;
     }
-    total_comp += N/2 + 1;
 
     // One by one extract an element
     // from heap
-    for (int i = N - 1; i > 0; i--) {
+    for (int i = N - 1; ++total_comp && i > 0; i--) {
 
         // Move current root to end
         swap(arr[0], arr[i]);
@@ -54,7 +53,6 @@ void heap_sort(int arr[], int N, long long & total_comp)
         heapify(arr, i, 0, comparison_heap);
         total_comp += comparison_heap;
     }
-    total_comp += N + 1;
 }
 
 void measure_heap_sort(int arr[], int n, double &time, long long &total_comp)
