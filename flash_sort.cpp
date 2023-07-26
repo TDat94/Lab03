@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void flash_sort(int arr[], int n, long long& totalcomp) {
+void flash_sort(int arr[], int n, long long& total_comp) {
     int max = 0, min = arr[0];
     int m = std::floor(0.45 * n);
     int* l = new int[m]();
