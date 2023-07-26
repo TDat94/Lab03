@@ -38,7 +38,7 @@ void merge(int arr[], int left, int right, int middle, long long &comparison){
 
 void merge_sort(int arr[], int left, int right, long long &total_comp){
     long long comparison = 0;
-    if((comparison++, left < right)){
+    if((++comparison && left < right)){
         int middle = (left + right) / 2;
         merge_sort(arr, left, middle, comparison);
         merge_sort(arr, middle + 1, right, comparison);
