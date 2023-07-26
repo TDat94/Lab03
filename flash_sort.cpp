@@ -39,15 +39,15 @@ void flash_sort(int arr[], int n, long long& total_comp) {
     int j = 0;
     int k = m - 1;
 
-    while (++totalcomp && move < (n - 1)) {
-        while (++totalcomp && j > (l[k] - 1)) {
+    while (++total_comp && move < (n - 1)) {
+        while (++total_comp && j > (l[k] - 1)) {
             ++j;
             k = std::floor(c1 * (arr[j] - min));
         }
         if (++total_comp && k < 0)
             break;
         flash = arr[j];
-        while (++totalcomp && j != l[k]) {
+        while (++total_comp && j != l[k]) {
             k = std::floor(c1 * (flash - min));
             hold = arr[t = --l[k]];
             arr[t] = flash;
@@ -60,7 +60,7 @@ void flash_sort(int arr[], int n, long long& total_comp) {
     for (j = 1; ++total_comp && j < n; j++) {
         hold = arr[j];
         int i = j - 1;
-        while ((++totalcomp && i >= 0) && (++totalcomp && arr[i] > hold)) {
+        while ((++total_comp && i >= 0) && (++total_comp && arr[i] > hold)) {
             arr[i + 1] = arr[i--];
         }
         arr[i + 1] = hold;
