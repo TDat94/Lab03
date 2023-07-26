@@ -13,24 +13,21 @@ int partition(int arr[], int low, int high, long long& comparison)
     swap(arr[pivotIndex], arr[high]);
     int i = low - 1;
 
-    for (int j = low; j <= high - 1; j++)
+    for (int j = low; ++comparison && j <= high - 1; j++)
     {
-        comparison+=2; // Increment comparison count
-        if (arr[j] < pivot)
+        if (++comparison && arr[j] < pivot)
         {
             i++;
             swap(arr[i], arr[j]);
         }
     }
-    comparison++;
-
     swap(arr[i + 1], arr[high]);
     return i + 1;
 }
 
 void quickSort(int arr[], int low, int high, long long& total_comparison)
 {
-    if (low < high) {
+    if (++total_comparison && low < high) {
         long long comparison = 0; // Initialize comparison count for each recursive call
         int pivotIndex = partition(arr, low, high, comparison);
         total_comparison += comparison; // Add comparison count to the total
