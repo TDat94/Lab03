@@ -1,11 +1,11 @@
 #include "lib.h"
 
 void selection_sort(int arr[], int size, long long &comparison){
-    for(int i = 0; (++comparison && i < size - 1);  i++){
+    for(int i = 0; ++comparison && i < size - 1; i++){
         int min = arr[i];
         int minIndex = i;
-        for(int j = i + 1; (++comparison && j < size); j++){
-            if(++comparison, min > arr[j]){
+        for(int j = i + 1; ++comparison && j < size; j++){
+            if(++comparison && min > arr[j]){
                 minIndex = j;
                 min = arr[j];
             }

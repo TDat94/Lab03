@@ -1,38 +1,34 @@
 #include "lib.h"
 
-void flash_sort(int arr[], int n, long long& totalcomp) {
+void flash_sort(int arr[], int n, long long& total_comp) {
     int max = 0, min = arr[0];
     int m = std::floor(0.45 * n);
     int* l = new int[m]();
 
-    for (int i = 1; i < n; ++i) {
-        if (arr[i] < min) {
+    for (int i = 1; ++total_comp && i < n; ++i) {
+        if (++total_comp && arr[i] < min) {
             min = arr[i];
         }
-        if (arr[i] > arr[max]) {
+        if (++total_comp && arr[i] > arr[max]) {
             max = i;
         }
-        totalcomp += 2;
     }
-    totalcomp += n;
 
-    if (min == arr[max]) {
+    if (++total_comp && min == arr[max]) {
         delete[] l; // Free the memory allocated for the array l
         return;
     }
 
     double c1 = (m - 1) / static_cast<double>(arr[max] - min);
 
-    for (int j = 0; j < n; ++j) {
+    for (int j = 0; ++total_comp && j < n; ++j) {
         int k = std::floor(c1 * (arr[j] - min));
         ++l[k];
     }
-    totalcomp += n + 1;
 
-    for (int p = 1; p < m; ++p) {
+    for (int p = 1; ++total_comp && p < m; ++p) {
         l[p] = l[p] + l[p - 1];
     }
-    totalcomp += n+1;
 
     int hold = arr[max];
     arr[max] = arr[0];
@@ -43,15 +39,15 @@ void flash_sort(int arr[], int n, long long& totalcomp) {
     int j = 0;
     int k = m - 1;
 
-    while (++totalcomp && move < (n - 1)) {
-        while (++totalcomp && j > (l[k] - 1)) {
+    while (++total_comp && move < (n - 1)) {
+        while (++total_comp && j > (l[k] - 1)) {
             ++j;
             k = std::floor(c1 * (arr[j] - min));
         }
-        if (k < 0)
+        if (++total_comp && k < 0)
             break;
         flash = arr[j];
-        while (++totalcomp && j != l[k]) {
+        while (++total_comp && j != l[k]) {
             k = std::floor(c1 * (flash - min));
             hold = arr[t = --l[k]];
             arr[t] = flash;
@@ -61,15 +57,14 @@ void flash_sort(int arr[], int n, long long& totalcomp) {
     }
 
     // Insertion
-    for (j = 1; j < n; j++) {
+    for (j = 1; ++total_comp && j < n; j++) {
         hold = arr[j];
         int i = j - 1;
-        while ((++totalcomp && i >= 0) && (++totalcomp && arr[i] > hold)) {
+        while ((++total_comp && i >= 0) && (++total_comp && arr[i] > hold)) {
             arr[i + 1] = arr[i--];
         }
         arr[i + 1] = hold;
     }
-    totalcomp += n;
 
     delete[] l; // Free the memory allocated for the array l
 }
