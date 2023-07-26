@@ -37,14 +37,14 @@ void merge(int arr[], int left, int right, int middle, long long &comparison){
 }
 
 void merge_sort(int arr[], int left, int right, long long &total_comp){
-    long long comparison = 0;
-    if((++comparison && left < right)){
+    if((++total_comp && left < right)){
         int middle = (left + right) / 2;
-        merge_sort(arr, left, middle, comparison);
-        merge_sort(arr, middle + 1, right, comparison);
+        merge_sort(arr, left, middle, total_comp);
+        merge_sort(arr, middle + 1, right, total_comp);
+        long long comparison = 0;
         merge(arr, left, right, middle, comparison);
+        total_comp += comparison;
     }
-    total_comp += comparison;
 }
 
 void measure_merge_sort(int arr[], int size, long long &comparison, double &time){
