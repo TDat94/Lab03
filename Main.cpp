@@ -377,6 +377,12 @@ void executeCommand5(string algorithm1, string algorithm2, int n, string order)
         cout << "Order is not found \n";
         return;
     }
+    ofstream ofs;
+    ofs.open("input.txt");
+    ofs << n << endl;
+    for (int i = 0; i < n; i++)
+        ofs << a[i] << " ";
+    ofs.close();
     long long comparison1 = 0, comparison2 = 0;
     double time1 = 0, time2 = 0;
     checkAlgorithm(algorithm1, a, n, comparison1, time1);
